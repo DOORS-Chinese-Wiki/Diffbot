@@ -1,0 +1,21 @@
+[project]
+name = "diffbot"
+version = "0.1.0"
+description = "MediaWiki Diff Bot QQ 机器人（NcatBot + MediaWiki Action API）"
+requires-python = ">=3.12"
+dependencies = [
+  "aiohttp>=3.9",
+  "PyYAML>=6.0",
+  "tzdata>=2024.1",
+  "Pillow>=10.0",
+  "ncatbot5>=0.5",
+  "uvloop>=0.19; sys_platform == 'linux'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"

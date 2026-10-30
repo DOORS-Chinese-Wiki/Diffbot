@@ -1,0 +1,12 @@
+name = "diffbot"
+version = "0.1.0"
+main = "main.py"
+entry_class = "DiffBotPlugin"
+author = "diffbot"
+description = "MediaWiki 变更监控与 Diff 推送机器人"
+
+[pip_dependencies]
+aiohttp = ">=3.9"
+PyYAML = ">=6.0"
+tzdata = ">=2024.1"
+Pillow = ">=10.0"

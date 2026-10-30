@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# DiffBot runtime & sensitive state
+data/
+napcat/
+/config.yaml
+/config/
+!plugins/diffbot/config.yaml
+.env
+.env.*
+!.env.example
+*.db
+*.db-wal
+*.db-shm
+*.log
+*.log.*
+*.gz
+
+# Server backups & scratch ops scripts
+backups/
+server_patches/
+toy/
+_gen.cjs
+scripts/remote_*.py
+scripts/deploy_*.py
+scripts/maibot_*.py
+scripts/gen_china_geo.py
+scripts/install_misans.py
+scripts/napcat_send.py
+scripts/messages/
+docs/compose/spec/wiki-cn-only.md
+docs/compose/spec/zh-wiki-mirror.md
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

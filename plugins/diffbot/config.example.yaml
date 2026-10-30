@@ -1,0 +1,74 @@
+# DiffBot 插件配置
+#
+# 注意：本文件现在只作为「首次种子」——启动时把下面的站点与订阅导入 SQLite，
+# 之后运行期一切以数据库为准（用 /wiki、/page、/filter、/bot 指令管理）。
+# 已用 /wiki remove 退订的订阅不会被这里的 subscriptions 复活。
+#
+# 权限：admins 为超级管理员（可 /bot admin、/wiki delete、/bot reload）；
+#       群管理员（群主/群管理员 或 /bot admin add 的 QQ）可管理订阅、过滤、图文开关。
+#
+# 环境变量：DIFFBOT_CONFIG（配置路径）、DIFFBOT_DATA_DIR（数据目录）、DIFFBOT_ADMINS（超管）
+
+sites:
+  zh_wikipedia:
+    name: 中文维基百科
+    language: zh
+    api_url: https://zh.wikipedia.org/w/api.php
+    base_url: https://zh.wikipedia.org
+    timezone: Asia/Shanghai
+    icon: 🌐
+    enabled: true
+
+  en_wikipedia:
+    name: English Wikipedia
+    language: en
+    api_url: https://en.wikipedia.org/w/api.php
+    base_url: https://en.wikipedia.org
+    timezone: UTC
+    icon: 🌐
+    enabled: true
+
+poll:
+  interval: 30        # 轮询间隔（秒）
+  jitter: 5           # 随机抖动（秒）
+  batch_limit: 50     # 单次拉取变更上限
+  timeout: 15         # HTTP 超时（秒）
+  max_diff_fetch: 10  # 单批最多拉取 diff 数
+  digest_threshold: 6 # 单批达到此数量改为聚合摘要
+
+push:
+  throttle_per_minute: 5   # 每群每分钟最多推送条数（群设置可覆盖）
+  max_pending: 20          # 队列积压上限，超出后聚合
+  max_message_chars: 3000  # 单条消息字符上限（自动分段）
+  max_diff_lines: 12       # 消息中展示的 diff 行数上限
+  visual: false            # 图文模式默认值（群内可用 /bot visual on 覆盖）
+
+# Discord 消息转载（/bridge）。token 建议用环境变量 DIFFBOT_DISCORD_TOKEN
+# discord:
+#   token: ""
+#   poll_interval: 20
+#   jitter: 3
+#   batch_limit: 50
+#   timeout: 15
+#   max_image_bytes: 8388608
+
+# Twitter 经 RSSHub 转载（/bridge add @handle）。实例可用 DIFFBOT_RSSHUB_URL 覆盖
+# rsshub:
+#   base_url: "https://rsshub.app"
+#   poll_interval: 60
+#   jitter: 5
+#   timeout: 15
+#   batch_limit: 20
+
+# 管理员 QQ 号（在群 owner/admin 之外额外放行管理指令）
+admins: []
+
+# 首次种子订阅（导入后即可用 /wiki remove 退订；退订状态记录在 subs_tombstone 表）
+# subscriptions:
+#   "123456789":
+#     sites: [zh_wikipedia, en_wikipedia]
+#     filters:
+#       zh_wikipedia:
+#         namespaces: [0, 1]
+#         ignore_users: []
+#         min_sizediff: 0

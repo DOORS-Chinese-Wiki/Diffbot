@@ -1,0 +1,13 @@
+# NcatBot 宿主配置（官方文档 https://docs.ncatbot.xyz/guide/0y9ejqdf/）
+# 也可运行 ncatbot init 交互式生成
+bot_uin: '10000'          # Bot 登录的 QQ 号
+root: '10001'             # 超级管理员 QQ 号
+adapters:
+  - type: napcat
+    platform: qq
+    enabled: true
+    config:
+      ws_uri: ws://napcat:3001   # Docker Compose 中为 napcat 服务名；本地开发用 ws://localhost:3001
+      ws_token: ""               # NapCat WebSocket 认证 Token
+plugin:
+  load_plugin: true              # 启用插件加载（plugins/ 目录）

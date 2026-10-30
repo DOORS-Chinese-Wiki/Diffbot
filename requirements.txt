@@ -1,0 +1,6 @@
+aiohttp>=3.9
+PyYAML>=6.0
+tzdata>=2024.1
+Pillow>=10.0
+ncatbot5>=0.5
+uvloop>=0.19; sys_platform == "linux"
